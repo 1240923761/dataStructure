@@ -25,6 +25,7 @@ func (list *LinearList) IsFull() bool {
 	return list.Length == list.MaxSize
 }
 
+//insert O(n)
 func (list *LinearList) Insert(i int, e Element) bool {
 	if i < 1 || i > list.Length {
 		fmt.Println("pls check i:", i)
@@ -39,6 +40,7 @@ func (list *LinearList) Insert(i int, e Element) bool {
 	return true
 }
 
+//delete O(n)
 func (list *LinearList) Del(i int) bool {
 	if i < 1 || i > list.Length {
 		fmt.Println("pls check i:", i)
@@ -53,6 +55,7 @@ func (list *LinearList) Del(i int) bool {
 	return true
 }
 
+//get O(1)
 func (list LinearList) GetElem(i int) Element {
 	if i < 1 || i > list.Length {
 		fmt.Println("pls check i:", i)
@@ -61,6 +64,7 @@ func (list LinearList) GetElem(i int) Element {
 	return list.Data[i-1]
 }
 
+//append O(1)
 func (list *LinearList) append(e Element) bool {
 	if list.IsFull() {
 		fmt.Println("list is fulle")
