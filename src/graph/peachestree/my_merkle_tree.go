@@ -11,6 +11,13 @@ type Content interface {
 	CalculateHash() ([]byte, error)
 	Equals(other Content) (bool, error)
 }
+type test struct {
+}
+
+func (t test) CalculateHash() {
+
+}
+
 type PeachTree struct {
 	Root         *Node
 	rootHash     []byte
