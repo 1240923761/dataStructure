@@ -1,18 +1,18 @@
-package main
+package xtest
 
 import (
 	"crypto/sha256"
+	"github.com/1240923761/dataStructure/graph/peachestree"
 	"log"
-
-	"../peachestree"
+	"testing"
 )
 
-//TestContent implements the Content interface provided by merkletree and represents the content stored in the tree.
+// TestContent implements the Content interface provided by merkletree and represents the content stored in the tree.
 type TestContent struct {
 	x string
 }
 
-//CalculateHash hashes the values of a TestContent
+// CalculateHash hashes the values of a TestContent
 func (t TestContent) CalculateHash() ([]byte, error) {
 	h := sha256.New()
 	if _, err := h.Write([]byte(t.x)); err != nil {
@@ -22,12 +22,12 @@ func (t TestContent) CalculateHash() ([]byte, error) {
 	return h.Sum(nil), nil
 }
 
-//Equals tests for equality of two Contents
+// Equals tests for equality of two Contents
 func (t TestContent) Equals(other peachestree.Content) (bool, error) {
 	return t.x == other.(TestContent).x, nil
 }
 
-func main() {
+func TestMerkleTree(t *testing.T) {
 	//Build list of Content to build tree
 	var list []peachestree.Content
 	list = append(list, TestContent{x: "Hello"})
@@ -53,7 +53,7 @@ func main() {
 	//}
 	//log.Println("Verify Tree: ", vt)
 
-	//Verify a specific content in in the tree
+	//Verify a specific content in the tree
 	//vc, err := t.VerifyContent(TestContent{x: "world"})
 	//if err != nil {
 	//	log.Fatal(err)

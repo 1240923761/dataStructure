@@ -11,12 +11,6 @@ type Content interface {
 	CalculateHash() ([]byte, error)
 	Equals(other Content) (bool, error)
 }
-type test struct {
-}
-
-func (t test) CalculateHash() {
-
-}
 
 type PeachTree struct {
 	Root         *Node
@@ -113,7 +107,7 @@ func (t *PeachTree) RootHash() []byte {
 	return t.rootHash
 }
 
-//String returns a string representation of the node.
+// String returns a string representation of the node.
 func (n *Node) String() string {
 	return fmt.Sprintf("是否为叶子节点:%t\nHash:%v\n%s", n.IsLeaf, n.Hash, n.LeafContent)
 }
